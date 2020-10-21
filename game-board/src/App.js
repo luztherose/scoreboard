@@ -15,6 +15,7 @@ function App() {
           You pass props to a component via the component's JXS tag at the place where is used. You can give a prop any name tha you want.
           Anytime you pass a value other than string, like a number or variable, you place it btw curly braces so that it gets evaluted as a JXS expression.
           The javaScript we write btw curly braces needs to be an expession or something that returns a value
+          Props pass data from a parent component down to a child component.
           Prop Tips
           1. When a component has more than one prop, you'll often see them written on separate lines and indented.
           2. You can omit the value of a prop when it's explicitly true
@@ -23,7 +24,11 @@ function App() {
         
         
         {/* player list */}
-        <Player />
+        <Player playerName="Luz" score={35}/>
+        {/* Since player is the parent of counter, it's going to define the props for both a player's name and score. */}
+        <Player playerName="George" score={55}/>
+        <Player playerName="Louis" score={70}/>
+        <Player playerName="Smith" score={60}/>
     </div>
   );
 }

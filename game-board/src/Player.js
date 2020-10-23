@@ -9,7 +9,10 @@ const Player = (props) => {
             </span>
 
             <Counter score={props.score}/> 
-            {/* Composition is when a component contains others components.*/}
+            {/* 
+            Composition is when a component contains others components.
+            A component is a small reusable chunk of code that is usually responsible for rendering one piece of the user interface.
+            */}
             {/* I'll give the child counter component a prop (of score), the prop can be named anything you want but to be consistent the with prop pass to the player component I named it score.
             I'll pass the score prompt down to the counter with props.score.
             Now, we can use the score prop by passing the counter function the parameter props and replacing the static score with curly braces and props.score.

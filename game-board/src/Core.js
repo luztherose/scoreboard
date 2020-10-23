@@ -31,6 +31,14 @@ const Core = (props) => {
                 <Player 
                     playerName={player.name} 
                     score={player.score} 
+                    key={player.id.toString()} 
+                    /*
+                    A key is a unique identifier that gives React a way to quickly and realibly identify an element in the list. It should be unique and should not be reused.(using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state. )
+
+                    The React docs recommend that we pass a string as the key value. So, to convert the id to string, we can call the toString() method on the player.id.
+
+                    Not all React elements need a key prop. Pass a key prop anytime you're creating elements by itering over an array of items that will be rearranged, added or deleted in your UI. The key will help React identify which items were changed, added or removed from the DOM.
+                     */
                     />
                     /* Since player is the parent of counter, it's going to define the props for both a player's name and score. */
             )}

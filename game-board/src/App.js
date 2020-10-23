@@ -5,19 +5,23 @@ import Core from './Core.js'
 const players = [
   {
       name: "Luz",
-      score: 45
+      score: 45,
+      id: 1 //this create a unique key manually
   },
   {
       name: "George",
-      score: 65
+      score: 65,
+      id: 2 //this create a unique key manually
   },
   {
       name: "Louis",
-      score: 75
+      score: 75,
+      id: 3 //this create a unique key manually
   },
   {
       name: "Smith",
-      score: 95
+      score: 95,
+      id: 4 //this create a unique key manually
   }
 ]
 

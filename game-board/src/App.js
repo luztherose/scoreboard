@@ -1,15 +1,30 @@
 import React from 'react';
 import './App.css';
-import Header from './Header.js';
-import Player from './Player';
+import Core from './Core.js'
+
+const players = [
+  {
+      name: "Luz",
+      score: 45
+  },
+  {
+      name: "George",
+      score: 65
+  },
+  {
+      name: "Louis",
+      score: 75
+  },
+  {
+      name: "Smith",
+      score: 95
+  }
+]
 
 function App() {
   return (
     <div className="scoreboard">
-        <Header 
-          title="scoreboard" 
-          totalPlayers={5} 
-        />
+        <Core initialPlayers={players}/> 
         {/* Props 
           Every React component and element can receive a list of attributes called properties (or props). Props are a core concept in React because it's how you get data into a component.
           You pass props to a component via the component's JXS tag at the place where is used. You can give a prop any name tha you want.
@@ -21,17 +36,13 @@ function App() {
           2. You can omit the value of a prop when it's explicitly true
           3. Use double quotes (") when writing props. HTML attributes commonly use double quotes instead of single, so props mirror this convention
         */}
-        
-        
-        {/* player list */}
-        <Player playerName="Luz" score={35}/>
-        {/* Since player is the parent of counter, it's going to define the props for both a player's name and score. */}
-        <Player playerName="George" score={55}/>
-        <Player playerName="Louis" score={70}/>
-        <Player playerName="Smith" score={60}/>
     </div>
   );
 }
 
+// ReactDOM.render(
+//   <App initialPlayers={players} />,
+//   document.getElementById('root')
+// );
 export default App;
 

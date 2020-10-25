@@ -8,7 +8,7 @@ const Player = (props) => {
                 {props.playerName}
             </span>
 
-            <Counter score={props.score}/> 
+            <Counter /> 
             {/* 
             Composition is when a component contains others components.
             A component is a small reusable chunk of code that is usually responsible for rendering one piece of the user interface.

@@ -28,7 +28,6 @@ function App(props) {
                 arrayOfPlayers.map( player => //this an implicit return omitting the return keyword and curly braces
                 <Player 
                     playerName={player.name} 
-                    score={player.score} 
                     key={player.id.toString()} 
                     /*
                     A key is a unique identifier that gives React a way to quickly and realibly identify an element in the list. It should be unique and should not be reused.(using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state. )

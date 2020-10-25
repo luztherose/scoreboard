@@ -41,16 +41,41 @@ const Counter = (props) => {
 }*/
 // Class Component
 class Counter extends React.Component {
-    // in JS classes, the extends keyword is used to create a subclass, or a child of another class.
-    // The only method we need to define in a class component is called render.
+    /*
+        in JS classes, the extends keyword is used to create a subclass, or a child of another class.
+        The only method we need to define in a class component is called render.
+    */
+    constructor() {
+        /* since state is an object, we create and initialize state within a class inside the constructor method.
+        Inside the constructor, I'll call super in order to call the constructor of the component class that we're extending. And this need to be done before we can use the "this" keyword within the constructor.
+
+        To initialize our component state, write this.state and set equal to an object. You must name this object state, otherwise this will not work.
+        You access state in a similar way to how you access props. 
+
+        Another way to initialize state is directly inside a class definition, using a class property. You omit the constructor method and super all together, and reference the state property directly. You don't need to write it as this.state just state, and set equal to the object.
+        state = {
+            score:0
+        }
+        This class properties syntax is a feature of JavaScript that's currently not support by all browsers
+        */
+        super() 
+        this.state = {
+            /*Since state is data that changes overtime we first name to set an initial state or the state of the component whe it fist mount*/
+            // This state in our counter is going to be the score we want to display for each player
+            score: 0
+        };
+    }
     render() {
+        /*
+            The render method in a class component is a function of not just props but props and state. In other words, if either props or state changes, React executes the render method to update what gets display to the user.  
+         */
         return (
             <div className="counter">
-            <button className="counter-action decrement">-</button>
-            <span className="counter-score">{this.props.score}</span>
-            <button className="counter-action increment">+</button>
-        </div> 
-    );
+                <button className="counter-action decrement">-</button>
+                <span className="counter-score">{ this.state.score }</span>
+                <button className="counter-action increment">+</button>
+            </div> 
+        );
     }
     
 }

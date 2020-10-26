@@ -92,15 +92,32 @@ class Counter extends React.Component {
 
         3. The most common way to define a event handler in React is with an arrow function. Arrow functions are automatically bond to the scope in which they are defined. So, if we rewrite the incrementScore method as an arrow function, the function gets bound to the component instance. The arrow function is enclosed inside the counter class, so the context is the component instance. Now we don't need to worry about binding it in the onClick event or in the constructor. We can simply reference and call the function in the onClick event with this.increamentScore make sure there is not parenthenses at the end.
          */
-        this.setState({
-            score: this.state.score + 1,
+        this.setState(prevState => {
+            return {
+                score: prevState.score + 1,
+            }
         }); 
     }
-    
+
+    /*
+    This way we are mutating or altering the state object directly
     decrementScore = () => {
         this.setState({
             score: this.state.score -1,
         });
+    }
+    */
+    // This way is more reliable cause the callback function is garanteed to fired after the update is applied and rendered out to the DOM. To make the callback func more concise you could omit the return keyword and curly braces, by wrapping the body the function in parenthenses. 
+    decrementScore = () => {
+        this.setState(prevState => {
+            return {
+                score: prevState.score -1,
+            };
+        });
+        /*
+            Update State Based on Previous State
+            Whenever you need to update state based on previous state, you shouldn't rely on this.state to calculate the next state. State updates may be asynchronous, so it may not always lead to the component re-rendering with new data, and could cause state inconsistency. setState() accepts a callback function that produces state based on the previous state in a more reliable way. 
+        */
     }
     render() {
         /*

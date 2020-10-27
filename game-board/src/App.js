@@ -36,6 +36,22 @@ class App extends React.Component { //make App a stateful component
     }
     ]
   }
+  handleRemovePlayer = (id) => {
+    // the func takes an id param for the player to remove from state
+    this.setState(prevState => {
+      // To the setState, we pass an object containing the prop to update
+      // We should never modify or mutate state directly, in order to remove a player from the players array on state, we need to produce a new array that no longer contains the player object we want to remove.
+      return {
+        players: prevState.players.filter((player) => {
+          return player.id !== id; // This return all the players excepts for the one we want to remove.
+        } )
+      }
+        
+      
+      
+    });
+
+  }
   render() {
     return (
       <div className="scoreboard">
@@ -60,7 +76,9 @@ class App extends React.Component { //make App a stateful component
                 this.state.players.map( player => //this an implicit return omitting the return keyword and curly braces
                   <Player 
                       playerName={player.name} 
+                      id={player.id}
                       key={player.id.toString()} 
+                      removePlayer={this.handleRemovePlayer}
                       /*
                       A key is a unique identifier that gives React a way to quickly and realibly identify an element in the list. It should be unique and should not be reused.(using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state. )
   

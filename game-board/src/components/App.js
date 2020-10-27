@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-//import Core from './Core.js'
+import '../App.css';
 import Header from './Header.js';
 import Player from './Player.js';
 

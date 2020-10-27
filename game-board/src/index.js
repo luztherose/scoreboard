@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const players = [
+/*const players = [
   {
       name: "Luz",
       score: 45,
@@ -26,10 +26,10 @@ const players = [
       id: 4 //this create a unique key manually
   }
 ]
-
+*/
 ReactDOM.render(
   <React.StrictMode>
-    <App initialPlayers={players}/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

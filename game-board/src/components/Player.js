@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from './Counter.js';
+import Counter from './Counter';
 
 const Player = (props) => {
     return (
@@ -9,7 +9,11 @@ const Player = (props) => {
                 {props.playerName}
             </span>
 
-            <Counter /> 
+            <Counter 
+            score={props.score}
+            index={props.index}
+            changeScore={props.changeScore}
+            /> 
             {/* 
             Composition is when a component contains others components.
             A component is a small reusable chunk of code that is usually responsible for rendering one piece of the user interface.

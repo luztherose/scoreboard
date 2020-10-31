@@ -40,12 +40,12 @@ const Counter = (props) => {
     );
 }*/
 // Class Component
-class Counter extends React.Component {
+//class Counter extends Component {
     /*
         in JS classes, the extends keyword is used to create a subclass, or a child of another class.
         The only method we need to define in a class component is called render.
     */
-    constructor() {
+    //constructor() {
         /* since state is an object, we create and initialize state within a class inside the constructor method.
         Inside the constructor, I'll call super in order to call the constructor of the component class that we're extending. And this need to be done before we can use the "this" keyword within the constructor.
 
@@ -60,18 +60,18 @@ class Counter extends React.Component {
 
         State is local to a component, meaning a component can maintain is own state, unlike props which are read-only.
         */
-        super() 
-        this.state = {
+        //super() 
+        //this.state = {
             /*Since state is data that changes overtime we first name to set an initial state or the state of the component whe it fist mount*/
             // This state in our counter is going to be the score we want to display for each player.
 
             // To make our counter interactive we need to be able to triger changes to the data in state. The score changes when the user clicks the plus or minus button. First, let's create the function or event handler that update our state using React's built-in set state method. 
             // Whenever the score gets updated React will re-render our component and the change will be visible in our UI. 
             // In class components, a common pattern is to create event handlers as a method on the class. 
-            score: 0
-        };
-    }
-    increamentScore = () =>  { // the name has not special meaning in React
+            //score: 0
+        //};
+    //}
+    //increamentScore = () =>  { // the name has not special meaning in React
         //console.log("Hi, from inside increament score!");
         /*
         In React, state is never modified directly. The only way React allows you to update a component's state is by using its built-in setState() method.
@@ -92,12 +92,16 @@ class Counter extends React.Component {
 
         3. The most common way to define a event handler in React is with an arrow function. Arrow functions are automatically bond to the scope in which they are defined. So, if we rewrite the incrementScore method as an arrow function, the function gets bound to the component instance. The arrow function is enclosed inside the counter class, so the context is the component instance. Now we don't need to worry about binding it in the onClick event or in the constructor. We can simply reference and call the function in the onClick event with this.increamentScore make sure there is not parenthenses at the end.
          */
-        this.setState(prevState => {
-            return {
-                score: prevState.score + 1,
-            }
-        }); 
-    }
+        /*
+            Communicating Between Components
+            A child component passes information back up to its ancestor(parent) thr a callback function. The callback will allow you to communicate events and changes in your data upwards, while data continue to flow downwards. 
+        */
+        // this.setState(prevState => {
+        //     return {
+        //         score: prevState.score + 1,
+        //     }
+        // }); 
+    //}
 
     /*
     This way we are mutating or altering the state object directly
@@ -108,34 +112,38 @@ class Counter extends React.Component {
     }
     */
     // This way is more reliable cause the callback function is garanteed to fired after the update is applied and rendered out to the DOM. To make the callback func more concise you could omit the return keyword and curly braces, by wrapping the body the function in parenthenses. 
-    decrementScore = () => {
-        this.setState(prevState => {
-            return {
-                score: prevState.score -1,
-            };
-        });
+    // decrementScore = () => {
+    //     this.setState(prevState => {
+    //         return {
+    //             score: prevState.score -1,
+    //         };
+    //     });
         /*
             Update State Based on Previous State
             Whenever you need to update state based on previous state, you shouldn't rely on this.state to calculate the next state. State updates may be asynchronous, so it may not always lead to the component re-rendering with new data, and could cause state inconsistency. setState() accepts a callback function that produces state based on the previous state in a more reliable way. 
         */
-    }
-    render() {
+    //}
+    
+    
         /*
+        render() {
             The render method in a class component is a function of not just props but props and state. In other words, if either props or state changes, React executes the render method to update what gets display to the user.  
          */
+        const Counter = (props) => {
+        let index = props.index;
+        //console.log(props.score)
         return (
+            
             <div className="counter">
             {/* React events are similar to JavaScript events except that they are written inline and named using camelCase.
             In the increament button, we'll specify the event we are listening for, onClick.(This event is specific to React, so you must name it onClick)
             You pass React events JXS expressions, using curly braces and the event handler that will get called when the specified event happens. We don't use parentheses to all increamentScore like we usually do to call functions or methods in JavaScript. We are only passing a reference to the method. Adding parentheses will call increamentScore and make it run right when the component mounts, or gets displayed on the page, which we don't want. We want React to call increamentScore only when the onClick event is fired.
              */}
-                <button className="counter-action decrement" onClick={ this.decrementScore }>-</button>
-                <span className="counter-score">{ this.state.score }</span>
-                <button className="counter-action increment" onClick={this.increamentScore }>+</button>
+                <button className="counter-action decrement" onClick={()=> props.changeScore(index, -1)}>-</button>
+                <span className="counter-score">{ props.score }</span>
+                <button className="counter-action increment" onClick={()=> props.changeScore(index, 1)}>+</button>
             </div> 
         );
-    }
-    
 }
 
 export default Counter; 

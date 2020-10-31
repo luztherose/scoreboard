@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../App.css';
-import Header from './Header.js';
-import Player from './Player.js';
+import Header from './Header';
+import Player from './Player';
 
-class App extends React.Component { //make App a stateful component
+class App extends Component { //make App a stateful component
   /*
     Types of State
   There are two main types of state:
@@ -19,22 +19,35 @@ class App extends React.Component { //make App a stateful component
     players: [
       {
         name: "Luz",
+        score:0,
         id: 1 //this create a unique key manually
     },
     {
         name: "George",
+        score:0,
         id: 2 //this create a unique key manually
     },
     {
         name: "Louis",
+        score:0,
         id: 3 //this create a unique key manually
     },
     {
         name: "Smith",
+        score:0,
         id: 4 //this create a unique key manually
     }
     ]
   }
+  handleScoreChange = (index, delta) => {
+    //delta is the variation of a function
+    //the index param will determine the player whose score would change
+      this.setState(prevState => ({
+              score: prevState.players[index].score += delta,
+      }));
+      //console.log("index " + index, "delta " + delta)
+    }
+
   handleRemovePlayer = (id) => {
     // the func takes an id param for the player to remove from state
     this.setState(prevState => {
@@ -72,11 +85,14 @@ class App extends React.Component { //make App a stateful component
               {/* player list */}
               
               {//Every JavaScript expression written inside JXS needs to be place inside curly braces. So the JXS is able to evalute the expression
-                this.state.players.map( player => //this an implicit return omitting the return keyword and curly braces
+                this.state.players.map( (player, index) => //this an implicit return omitting the return keyword and curly braces
                   <Player 
                       playerName={player.name} 
+                      score={player.score}
                       id={player.id}
                       key={player.id.toString()} 
+                      index={index}
+                      changeScore={this.handleScoreChange}//this callback will run at later time thr some interaction with a child
                       removePlayer={this.handleRemovePlayer}
                       /*
                       A key is a unique identifier that gives React a way to quickly and realibly identify an element in the list. It should be unique and should not be reused.(using indexes for keys is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state. )

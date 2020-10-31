@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; //react-dom is a module needed to render our application to the DOM. 
 import './index.css';
-import App from './App';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 /*const players = [

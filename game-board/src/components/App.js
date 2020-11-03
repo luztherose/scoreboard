@@ -42,11 +42,16 @@ class App extends Component { //make App a stateful component
   handleScoreChange = (index, delta) => {
     //delta is the variation of a function
     //the index param will determine the player whose score would change
-      this.setState(prevState => ({
-              score: prevState.players[index].score += delta,
-      }));
+    debugger
+
+      this.setState(prevState => {
+        debugger
+        return {
+          score: prevState.players[index].score += delta,
+        }
+      });
       //console.log("index " + index, "delta " + delta)
-    }
+  }
 
   handleRemovePlayer = (id) => {
     // the func takes an id param for the player to remove from state
@@ -87,7 +92,7 @@ class App extends Component { //make App a stateful component
               {//Every JavaScript expression written inside JXS needs to be place inside curly braces. So the JXS is able to evalute the expression
                 this.state.players.map( (player, index) => //this an implicit return omitting the return keyword and curly braces
                   <Player 
-                      playerName={player.name} 
+                      name={player.name} 
                       score={player.score}
                       id={player.id}
                       key={player.id.toString()} 

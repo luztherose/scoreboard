@@ -131,15 +131,13 @@ const Counter = (props) => {
          */
         const Counter = (props) => {
         let index = props.index;
-        //console.log(props.score)
         return (
-            
             <div className="counter">
             {/* React events are similar to JavaScript events except that they are written inline and named using camelCase.
             In the increament button, we'll specify the event we are listening for, onClick.(This event is specific to React, so you must name it onClick)
             You pass React events JXS expressions, using curly braces and the event handler that will get called when the specified event happens. We don't use parentheses to all increamentScore like we usually do to call functions or methods in JavaScript. We are only passing a reference to the method. Adding parentheses will call increamentScore and make it run right when the component mounts, or gets displayed on the page, which we don't want. We want React to call increamentScore only when the onClick event is fired.
              */}
-                <button className="counter-action decrement" onClick={()=> props.changeScore(index, -1)}>-</button>
+                <button className="counter-action decrement" onClick={() => props.changeScore(index, -1) }>-</button>
                 <span className="counter-score">{ props.score }</span>
                 <button className="counter-action increment" onClick={()=> props.changeScore(index, 1)}>+</button>
             </div> 
